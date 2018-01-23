@@ -13,22 +13,21 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Global CSS
-  */
-  css: ['~assets/css/main.css'],
-  /*
-  ** Customize the progress-bar color
-  */
+  css: [
+    { src: '~assets/css/reset.css', lang: 'css' },
+    { src: '~assets/css/main.less', lang: 'less' }
+  ],
+  plugins: [
+    { src: '~plugins/flexible.js', ssr: false }
+  ],
   loading: { color: '#3B8070' },
-  /*
-   ** Build configuration
-   */
+  cache: true,
   build: {
+    vendor: ['axios']
     /*
      ** Run ESLINT on save
      */
-    extend (config, ctx) {
+ /*   extend (config, ctx) {
       if (ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -37,6 +36,6 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    }*/
   }
 }

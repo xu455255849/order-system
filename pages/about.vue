@@ -19,11 +19,22 @@ export default {
       name: req ? 'server' : 'client'
     }
   },
-  head() {
+  middleware: 'auth',  //定义页面中间件
+  head () {
     return {
-      title: `About Page (${this.name}-side)`
+      title: '其他页面'
     }
-  }
+  },
+  data () {
+    return {}
+  },
+  computed: {
+    ...mapState([
+      // 映射 this.xxx 为 store.state.xxx
+      'columns1',
+      'data1'
+    ])
+  },
 }
 </script>
 
